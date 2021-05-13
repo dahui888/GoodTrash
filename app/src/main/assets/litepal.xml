@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!--数据库名称-->
+    <dbname value="GoodTrash" />
+    <!--数据库版本-->
+    <version value="2" />
+
+    <!--映射模型-->
+    <list>
+        <!--新闻表-->
+        <mapping class="com.llw.goodtrash.bean.News" />
+        <!--历史记录表-->
+        <mapping class="com.llw.goodtrash.bean.History" />
+    </list>
+</litepal>

@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.llw.mvplibrary" >
+    <!--访问网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity
+            android:name=".network.environment.NetworkEnvironmentActivity"
+            android:label="@string/network_environment_setting"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

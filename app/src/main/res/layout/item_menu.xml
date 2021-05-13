@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="16dp">
+    <!--菜单图标-->
+    <ImageView
+        android:id="@+id/iv_menu_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+    <!--菜单名称-->
+    <TextView
+        android:layout_marginStart="16dp"
+        android:id="@+id/tv_menu_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+</LinearLayout>

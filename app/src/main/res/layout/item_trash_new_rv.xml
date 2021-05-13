@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:id="@+id/item_trash_news"
+    android:foreground="?attr/selectableItemBackground"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_16">
+    <!--标题-->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="标题"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold" />
+
+    <!--内容描述-->
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="内容描述"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14" />
+
+</RelativeLayout>

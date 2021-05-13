@@ -1,0 +1,46 @@
+buildscript {
+
+    repositories {
+        //阿里云效空间
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        //gradle编译版本
+        classpath "com.android.tools.build:gradle:4.1.2"
+    }
+}
+
+allprojects {
+    repositories {
+        //阿里云效空间
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        google()
+        mavenCentral()
+    }
+
+    //打印过时Api详情
+//        gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+//        }
+//    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

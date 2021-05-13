@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <!--标题-->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="@dimen/dp_2"
+        app:navigationIcon="@mipmap/icon_back">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="图像输入"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <!--滑动控件-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_picture"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_300"
+                android:layout_marginTop="@dimen/dp_12"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_image_url"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_margin="@dimen/dp_1"
+                android:background="@drawable/shape_et_bg"
+                android:hint="网络图片Url"
+                android:imeOptions="actionGo"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/cursor_style"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_12">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_web_picture"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginEnd="@dimen/dp_6"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:insetTop="@dimen/dp_0"
+                    android:insetBottom="@dimen/dp_0"
+                    android:text="网络图片"
+                    android:textSize="@dimen/sp_16"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:backgroundTint="@color/colorPrimaryDark"
+                    app:cornerRadius="@dimen/dp_12"
+                    app:iconGravity="textStart"
+                    app:iconSize="@dimen/dp_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_album"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:layout_marginEnd="@dimen/dp_6"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:insetTop="@dimen/dp_0"
+                    android:insetBottom="@dimen/dp_0"
+                    android:text="相册图片"
+                    android:textSize="@dimen/sp_16"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:backgroundTint="@color/colorPrimaryDark"
+                    app:cornerRadius="@dimen/dp_12"
+                    app:iconGravity="textStart"
+                    app:iconSize="@dimen/dp_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_take_photo"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:insetTop="@dimen/dp_0"
+                    android:insetBottom="@dimen/dp_0"
+                    android:text="拍照图片"
+                    android:textSize="@dimen/sp_16"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:backgroundTint="@color/colorPrimaryDark"
+                    app:cornerRadius="@dimen/dp_12"
+                    app:iconGravity="textStart"
+                    app:iconSize="@dimen/dp_24" />
+            </LinearLayout>
+            <!--图像识别结果-->
+            <LinearLayout
+                android:id="@+id/lay_recognition_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/line_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_12"
+                        android:text="识别结果" />
+
+                    <View
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/line_color" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recognition_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+            <!--垃圾分类结果-->
+            <LinearLayout
+                android:id="@+id/lay_classification_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/line_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_12"
+                        android:text="分类结果" />
+
+                    <View
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/line_color" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_classification_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

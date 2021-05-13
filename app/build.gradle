@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "com.llw.goodtrash"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 仅保留中文语种的资源 en（英语） 和 zh-rCN（简体中文）
+        resConfigs "zh-rCN"
+
+        // 仅保留 xxhdpi 图片资源（目前主流分辨率 1920 * 1080）
+        resConfig 'xxhdpi'
+
+        // 仅保留两种架构的 so 库即可适配市面上99%的机型
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    packagingOptions {
+        // 剔除这个包下的所有文件（不会移除签名信息）
+        exclude 'META-INF/*******'
+    }
+
+    //支持JAVA8 支持lambda语法
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //修改APP加载资源目录
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []    //disable automatic ndk-build
+        }
+    }
+
+    // 自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Trash${versionName}.apk"
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':mvplibrary')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    // implementation 'com.hjq:xxpermissions:9.8'
+    // 标题栏框架：https://github.com/getActivity/TitleBar
+    // implementation 'com.hjq:titlebar:8.2'
+    // 吐司框架：https://github.com/getActivity/ToastUtils
+    // implementation 'com.hjq:toast:8.8'
+    // 网络请求框架：https://github.com/getActivity/EasyHttp
+    // implementation 'com.hjq:http:9.0'
+    // OkHttp 框架：https://github.com/square/okhttp
+    // noinspection GradleDependency
+    // implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+    // Json 解析框架：https://github.com/google/gson
+    // implementation 'com.google.code.gson:gson:2.8.6'
+    // Gson 解析容错：https://github.com/getActivity/GsonFactory
+    // implementation 'com.hjq.gson:factory:3.0'
+    // AOP 插件库：https://mvnrepository.com/artifact/org.aspectj/aspectjrt
+    // implementation 'org.aspectj:aspectjrt:1.9.6'
+    // 图片加载框架：https://github.com/bumptech/glide
+    // 官方使用文档：https://muyangmin.github.io/glide-docs-cn/
+    // implementation 'com.github.bumptech.glide:glide:4.12.0'
+    // annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    // 沉浸式框架：https://github.com/gyf-dev/ImmersionBar
+    // implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // 手势 ImageView：https://github.com/chrisbanes/PhotoView
+    // implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    // Bugly 异常捕捉：https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20190418140644
+    // implementation 'com.tencent.bugly:crashreport:3.3.3'
+    // implementation 'com.tencent.bugly:nativecrashreport:3.7.700'
+    // 动画解析库：https://github.com/airbnb/lottie-android
+    // 动画资源：https://lottiefiles.com、https://icons8.com/animated-icons
+    // implementation 'com.airbnb.android:lottie:3.6.1'
+    // 日志打印框架：https://github.com/JakeWharton/timber
+    // implementation 'com.jakewharton.timber:timber:4.7.1'
+    // 指示器框架：https://github.com/ongakuer/CircleIndicator
+    // implementation 'me.relex:circleindicator:2.1.6'
+    // MMKV更快的轻量存储: https://github.com/Tencent/MMKV
+    // implementation 'com.tencent:mmkv-static:1.2.7'
+    // 侧滑框架：https://github.com/luckybilly/SmartSwipe
+    // implementation 'com.billy.android:smart-swipe:1.1.2'
+    // implementation 'com.billy.android:smart-swipe-x:1.1.0'
+    // 国际化：https://github.com/getActivity/MultiLanguages
+    // 悬浮窗：https://github.com/getActivity/XToast
+    // 日志输出：https://github.com/getActivity/Logcat
+    // 工具类：https://github.com/Blankj/AndroidUtilCode
+    // 轮播图：https://github.com/bingoogolapple/BGABanner-Android
+    // 二维码：https://github.com/bingoogolapple/BGAQRCode-Android
+    // 跑马灯：https://github.com/sunfusheng/MarqueeView
+    // 对象注解：https://www.jianshu.com/p/f1f888e4a35f
+    // 平板适配：https://github.com/JessYanCoding/AndroidAutoSize
+    // 图片压缩：https://github.com/Curzibn/Luban
+    // 对象存储：https://github.com/leavesC/DoKV
+    // 第三方支付：https://github.com/Cuieney/RxPay
+    // 多渠道打包：https://github.com/Meituan-Dianping/walle
+    // 设备唯一标识：http://msa-alliance.cn/col.jsp?id=120
+
+}
